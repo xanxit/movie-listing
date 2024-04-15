@@ -5,6 +5,7 @@ import "./movie.css";
 const MovieListing = () => {
   const [movieList, setMovieList] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [loading, setLoading] = useState(false);
   const apiCall = useMemo(
     () => async () => {
       try {
@@ -19,14 +20,21 @@ const MovieListing = () => {
     },
     [pageNumber]
   );
+  const handleLoadMore = async () => {
+    setLoading((prev) => !prev);
+    await setTimeout(() => {
+      setPageNumber(pageNumber + 1);
+      setLoading(false)
+    }, 2000);
+    
+  };
   useEffect(() => {
     apiCall();
   }, [pageNumber]);
   return (
     <div className="flex flex-col gap-10 mt-4">
-    <h1 className="text-4xl text-gray-700 lg:ml-28"> Movie List</h1>
+      <h1 className="text-4xl text-gray-700 lg:ml-28"> Movie List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:ml-28">
-        
         {movieList.map((ele, idx) => (
           <div
             className="card cursor-pointer"
@@ -36,7 +44,9 @@ const MovieListing = () => {
             }}
           >
             <div className="card-content">
-              <h2 className="card-title text-3xl pb-2 text-wrap">{ele.title}</h2>
+              <h2 className="card-title text-3xl pb-2 text-wrap">
+                {ele.title}
+              </h2>
               <p className="card-body py-6 line-clamp-6">{ele.overview}</p>
               <a href="#" className="button text-white hover:text-black">
                 Learn More
@@ -44,6 +54,31 @@ const MovieListing = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex items-center justify-center lg:ml-28 py-10">
+        {!loading ? (
+          <button
+            className="bg-gray-800 hover:bg-black rounded text-white h-12 w-auto px-6 loader"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        ) : (
+          <div className="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
       </div>
     </div>
   );
