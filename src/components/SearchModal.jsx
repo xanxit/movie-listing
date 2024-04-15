@@ -1,6 +1,6 @@
 const SearchModal = () => {
   return (
-    <form className="max-w-lg mx-auto absolute left-16 lg:left-1/3 top-10">
+    <form className="max-w-lg mx-auto absolute left-10 lg:left-1/3 top-10">
       <div className="flex shadow-lg">
         <button
           id="dropdown-button"
@@ -67,7 +67,7 @@ const SearchModal = () => {
             </li>
           </ul>
         </div>
-        <div className="relative w-full lg:w-[400px] ">
+        <div className="relative w-[200px] lg:w-[400px] ">
           <input
             type="search"
             id="search-dropdown"
@@ -77,7 +77,7 @@ const SearchModal = () => {
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 flex items-center justify-center"
+            className="absolute top-0 end-0 p-4 text-sm font-medium h-full text-white bg-gray-700 rounded-e-lg border border-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 flex items-center justify-center"
           >
             <svg
               className="w-4 h-4"

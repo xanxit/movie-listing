@@ -1,7 +1,6 @@
 import Sidebar from "./components/Sidebar";
 import SearchModal from "./components/SearchModal";
 import MovieListing from "./components/MovieListing";
-import ResponsiveCarousel from "./components/HeroCarousel";
 
 function App() {
   return (
@@ -29,13 +28,10 @@ function App() {
         <div style={{ display: "flex" }}>
           <Sidebar />
           <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-            <div className="justify-center items-center hidden">
+            <div className="justify-center items-center">
               <SearchModal />
             </div>
-            <div className="flex flex-col justify-center items-center lg:mt-8">
-              <ResponsiveCarousel />
-            </div>
-            <div className="flex justify-center items-center mt-20">
+            <div className="flex justify-center items-center mt-24">
               <MovieListing />
             </div>
           </div>
