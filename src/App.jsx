@@ -17,7 +17,9 @@ function App() {
     () => async () => {
       try {
         const res = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=57df56edb2ad9a0e4eb9010ee59a23ef&language=en-US&page=${pageNumber}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US&page=${pageNumber}`
         );
         const test = res.data.results;
         setMovieList((prev) => [...prev, ...test]);
@@ -45,11 +47,11 @@ function App() {
 
   const sortMoviesByTerm = (movies, sortTerm) => {
     return movies.slice().sort((a, b) => {
-      if (sortTerm === 'Release Date') {
+      if (sortTerm === "Release Date") {
         return new Date(a.release_date) - new Date(b.release_date);
-      } else if (sortTerm === 'Popularity') {
+      } else if (sortTerm === "Popularity") {
         return b.popularity - a.popularity;
-      } else if (sortTerm === 'Ratings') {
+      } else if (sortTerm === "Ratings") {
         return b.vote_average - a.vote_average;
       }
       // Return 0 for unrecognized sortTerm
