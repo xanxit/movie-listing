@@ -31,9 +31,6 @@ const MovieListing = ({
                 {ele.title}
               </h2>
               <p className="card-body py-6 line-clamp-6">{ele.overview}</p>
-              <a href="#" className="button text-white hover:text-black">
-                Learn More
-              </a>
             </div>
           </div>
         ))}
