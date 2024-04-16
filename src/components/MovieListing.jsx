@@ -1,36 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
+/* eslint-disable react/prop-types */
 import "./movie.css";
-
-const MovieListing = () => {
-  const [movieList, setMovieList] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const apiCall = useMemo(
-    () => async () => {
-      try {
-        const res = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=57df56edb2ad9a0e4eb9010ee59a23ef&language=en-US&page=${pageNumber}`
-        );
-        const test = res.data.results;
-        setMovieList((prev) => [...prev, ...test]);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    [pageNumber]
-  );
+const MovieListing = ({
+  movieList,
+  pageNumber,
+  loading,
+  setLoading,
+  setPageNumber,
+}) => {
   const handleLoadMore = async () => {
     setLoading((prev) => !prev);
     await setTimeout(() => {
-      setPageNumber(pageNumber + 1);
-      setLoading(false)
+      setPageNumber((prev) => prev + 1);
+      setLoading(false);
     }, 2000);
-    
   };
-  useEffect(() => {
-    apiCall();
-  }, [pageNumber]);
   return (
     <div className="flex flex-col gap-10 mt-4">
       <h1 className="text-4xl text-gray-700 lg:ml-28"> Movie List</h1>
@@ -58,7 +41,7 @@ const MovieListing = () => {
       <div className="flex items-center justify-center lg:ml-28 py-10">
         {!loading ? (
           <button
-            className="bg-gray-800 hover:bg-black rounded text-white h-12 w-auto px-6 loader"
+            className="bg-gray-800 hover:bg-black rounded text-white h-12 w-auto px-6 mb-8 loader"
             onClick={handleLoadMore}
           >
             Load More
