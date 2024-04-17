@@ -39,10 +39,12 @@ function App() {
       return;
     }
 
-    const filteredMovies = movieList.filter((movie) =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredMovieList(filteredMovies);
+    setTimeout(() => {
+      const filteredMovies = movieList.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredMovieList(filteredMovies);
+    },1000);
   }, [searchTerm, movieList]);
 
   const sortMoviesByTerm = (movies, sortTerm) => {

@@ -38,6 +38,7 @@ const MovieListing = ({
       <div className="flex items-center justify-center lg:ml-28 py-10">
         {!loading ? (
           <button
+            data-testid="loadMore"
             className="bg-gray-800 hover:bg-black rounded text-white h-12 w-auto px-6 mb-8 loader"
             onClick={handleLoadMore}
           >
