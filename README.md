@@ -1,8 +1,21 @@
-# React + Vite
+# Movie Listing App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Movie Listing App has been built with ReactJS, TailwindCSS, TMDB API, and Cypress for e2e testing. The app lists all the latest movies and have features like debounced searching and sorting with loading More than 500 pages.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- ### Movie Listing
+      The app is basically a repository of all the latest movies with a very interactive and user-friendly user interface.
+      ![appImage](https://github.com/xanxit/weather-dashboard/blob/master/public/appImage.png)
+
+  
+- ### Memoized API Call
+      The app memoizes the API call, hence avoiding overhead on the server.
+
+- ### Debounced Search
+      In order to improve the performance and the user experience of the search, I have added a debounce to the search.
+
+- ### Cypress Testing
+      To have an hassle free development and release, I have integreated Cypress for e2e testing of the app, ensuring the stability of the app.
+  
