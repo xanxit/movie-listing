@@ -7,6 +7,7 @@ const SearchModal = ({
   setSortTerm,
   isOpen,
   setIsOpen,
+  handleKeyDown
 }) => {
   const handleSortChange = (value) => {
     setSortTerm(value);
@@ -76,7 +77,6 @@ const SearchModal = ({
             required
           />
           <button
-            type="submit"
             className="absolute top-0 end-0 p-4 text-sm font-medium h-full text-white bg-gray-700 rounded-e-lg border border-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 flex items-center justify-center"
           >
             <svg
