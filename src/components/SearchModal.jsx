@@ -7,7 +7,6 @@ const SearchModal = ({
   setSortTerm,
   isOpen,
   setIsOpen,
-  handleKeyDown
 }) => {
   const handleSortChange = (value) => {
     setSortTerm(value);
@@ -70,7 +69,6 @@ const SearchModal = ({
             onChange={(e) => {
               setSearchTerm(e.target.value);
             }}
-            // onKeyDown={handleKeyDown}
             id="search-dropdown"
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:outline-none"
             placeholder="Search for Movies"
