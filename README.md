@@ -6,8 +6,8 @@ This Movie Listing App has been built with ReactJS, TailwindCSS, TMDB API, and C
 ## Features
 
 - ### Movie Listing
-      The app is basically a repository of all the latest movies with a very interactive and user-friendly user interface.
-      ![appImage](https://github.com/xanxit/movie-listing/blob/master/public/appImage.png)
+  The app is basically a repository of all the latest movies with a very interactive and user-friendly user interface.
+  ![appImage](https://github.com/xanxit/movie-listing/blob/master/public/appImage.png)
 
   
 - ### Memoized API Call
