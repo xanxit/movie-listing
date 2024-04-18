@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import Sidebar from "./components/Sidebar";
 import SearchModal from "./components/SearchModal";
@@ -12,6 +12,7 @@ function App() {
   const [sortTerm, setSortTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const elementRef = useRef(null);
   const sortParams = ["Release Date", "Popularity", "Ratings"];
   const apiCall = useMemo(
     () => async () => {
@@ -44,7 +45,7 @@ function App() {
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredMovieList(filteredMovies);
-    },1000);
+    }, 1000);
   }, [searchTerm, movieList]);
 
   const sortMoviesByTerm = (movies, sortTerm) => {
@@ -60,7 +61,23 @@ function App() {
       return 0;
     });
   };
-
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const firstEntry = entries[0];
+      if (firstEntry.isIntersecting) {
+        setPageNumber((prev) => prev + 1);
+        apiCall();
+      }
+    });
+    if (observer && elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [movieList]);
   useEffect(() => {
     const sortedMovies = sortMoviesByTerm(movieList, sortTerm);
     setFilteredMovieList(sortedMovies);
@@ -107,6 +124,7 @@ function App() {
                 setPageNumber={setPageNumber}
                 loading={loading}
                 setLoading={setLoading}
+                elementRef={elementRef}
               />
             </div>
           </div>

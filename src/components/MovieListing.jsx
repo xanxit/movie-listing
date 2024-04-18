@@ -6,6 +6,7 @@ const MovieListing = ({
   loading,
   setLoading,
   setPageNumber,
+  elementRef
 }) => {
   const handleLoadMore = async () => {
     setLoading((prev) => !prev);
@@ -41,6 +42,7 @@ const MovieListing = ({
             data-testid="loadMore"
             className="bg-gray-800 hover:bg-black rounded text-white h-12 w-auto px-6 mb-8 loader"
             onClick={handleLoadMore}
+            ref={elementRef}
           >
             Load More
           </button>
