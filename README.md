@@ -13,6 +13,9 @@ This Movie Listing App has been built with ReactJS, TailwindCSS, TMDB API, and C
 - ### Memoized API Call
       The app memoizes the API call, hence avoiding overhead on the server.
 
+- ### Infinty Scroll
+      The app has infinity scroll, it automatically detects the last card and populates the rest once the user reaches at the last of any page
+
 - ### Debounced Search
       In order to improve the performance and the user experience of the search, I have added a debounce to the search.
 
